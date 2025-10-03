@@ -51,7 +51,14 @@ function animate() {
 
 bg.onload = animate; // bắt đầu khi ảnh nền load xong
 
-// Xử lý click vào lồng đèn
+// Popup
+const popup = document.getElementById("popup");
+const closeBtn = document.getElementById("close");
+const message = document.getElementById("message");
+const popupImg = document.getElementById("popup-img");
+const openBtn = document.getElementById("open-btn");
+
+// Hiện popup khi bấm vào lồng đèn
 canvas.addEventListener("click", (e) => {
   lanterns.forEach(lantern => {
     if (
@@ -65,12 +72,6 @@ canvas.addEventListener("click", (e) => {
   });
 });
 
-// Popup
-const popup = document.getElementById("popup");
-const closeBtn = document.getElementById("close");
-const message = document.getElementById("message");
-const popupImg = document.getElementById("popup-img");
-
 function showPopup() {
   const messages = [
     "🌕 Trung Thu vui vẻ Hồng Nguyên nhé!",
@@ -81,8 +82,6 @@ function showPopup() {
 
   const mode = Math.floor(Math.random() * 3);
 
-  // Ẩn nút mở mặc định
-  const openBtn = document.getElementById("open-btn");
   openBtn.style.display = "none";
   openBtn.onclick = null;
 
@@ -97,22 +96,19 @@ function showPopup() {
     let imgPick = images[Math.floor(Math.random() * images.length)];
     
     if (imgPick === "anh4.jpg") {
-      // Nếu là anh4.jpg => hiện hộp quà có chữ + nút mở
       popupImg.src = "anh4.jpg";
       popupImg.style.display = "block";
       message.innerText = "Món quà dành cho Hồng Nguyên";
       message.style.display = "block";
 
-      // Hiện nút "Mở"
       openBtn.style.display = "inline-block";
       openBtn.onclick = () => {
-        message.innerText = "💖💖💖";  // chỉ hiện nội dung
-        popupImg.style.display = "none"; // ẩn luôn ảnh hộp quà
-        openBtn.style.display = "none";  // ẩn nút mở sau khi bấm
+        message.innerText = "💖💖💖";
+        popupImg.style.display = "none";
+        openBtn.style.display = "none";
       };
 
     } else {
-      // Bình thường
       popupImg.src = imgPick;
       popupImg.style.display = "block";
       message.style.display = "none";
@@ -129,7 +125,4 @@ function showPopup() {
   popup.classList.remove("hidden");
 }
 
-
-
 closeBtn.onclick = () => popup.classList.add("hidden");
-
