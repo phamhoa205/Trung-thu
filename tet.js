@@ -11,7 +11,7 @@ window.addEventListener("resize", () => {
 
 // Ảnh nền
 const bg = new Image();
-bg.src = "nen.jpg";
+bg.src = "anh-nen.jpg";
 
 // Danh sách lồng đèn
 let lanterns = [];
@@ -132,3 +132,4 @@ function showPopup() {
 
 
 closeBtn.onclick = () => popup.classList.add("hidden");
+
